@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0" />
+	<title>vue plugin test</title>
+	<style type="text/css">
+		strong{
+			font-size: 15px;
+		}
+		pre{
+			padding: 16px 0;
+			overflow: auto;
+			line-height: 1.45;
+			background-color: #f6f8fa;
+			border-radius: 3px;
+		}
+	</style>
+</head>
+<body style="padding:30px;">
+<div id="app">
+	<pre>
+	<strong>vue-tap.js</strong>
+	
+	<b>简洁的调用方式：</b>
+	 v-tap="[方法，参数一，参数二...]"
+	 
+	<b>获取参数：</b>
+	methods:{
+		tap:function(参数一，参数二...){
+		  console.log(参数一，参数二...);
+		}
+	}
+	
+	<b>阻止冒泡：</b>
+	v-tap.stop
+	</pre>
+	<hr>
+	<div v-for="(l,i) in list">
+		<div v-tap="[tap,l,i]">li-{{l}}-{{i}}</div>
+	</div>
+	<br>
+	<hr>
+	<div v-tap="[test,'parent']">
+		parent<br><br>
+		<button v-tap.stop="[test,'son']">stop propagation</button>
+	</div>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.5.13/vue.js"></script>
+<script src="vue-tap.js"></script>
+<script>
+    new Vue({
+		el:'#app',
+		data:{
+			list:['a','b','c','e','f']
+		},
+		methods:{
+			tap:function(i,k){
+				console.log(i,k);
+			},
+			test:function(i){
+				console.log(i);
+			}
+		}
+	})
+	if(window.innerWidth < 768){
+		document.getElementsByTagName('body')[0].style.padding = 0;
+	}
+</script>
+</body>
+</html>
