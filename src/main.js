@@ -1,5 +1,5 @@
 var Vue = require('./vue.js');
-var VueTap = require('./vue-tap.js');
+var VueTap = require('../vue-tap.js');
 Vue.use(VueTap);
 
 new Vue({

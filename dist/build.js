@@ -11439,7 +11439,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
    install:function(Vue){
 	   Vue.directive('tap', this.master);
    },
-   version:'1.0.4'
+   version:'1.0.7'
 }))
 
 

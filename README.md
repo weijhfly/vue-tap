@@ -6,10 +6,8 @@ $ npm install --save vue-js-tap
 ```
 # Usage
 ```js
-var Vue = require('vue');
-var vueTap= require('vue-js-tap');
+import vueTap from 'vue-js-tap';
 Vue.use(vueTap);
-
 //调用方式：
 v-tap="[tap，arg,arg2...]"
 
@@ -28,4 +26,4 @@ v-tap.stop
 
 > * 发布至github及npm(vue-js-tap)
 > * 包含方法调用，阻止冒泡功能
-> * 只支持vue2.0
+> * 只支持vue2.0+

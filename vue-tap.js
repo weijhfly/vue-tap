@@ -62,5 +62,5 @@
    install:function(Vue){
 	   Vue.directive('tap', this.master);
    },
-   version:'1.0.6'
+   version:'1.0.8'
 }))
