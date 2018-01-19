@@ -8,6 +8,7 @@ $ npm install --save vue-js-tap
 ```js
 import vueTap from 'vue-js-tap';
 Vue.use(vueTap);
+
 //调用方式：
 v-tap="[tap，arg,arg2...]"
 
