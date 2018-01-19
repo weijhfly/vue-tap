@@ -1,6 +1,6 @@
 /*!
  * vue-tap.js
- * by weijianhua  https://github.com/weijhfly/tap
+ * by weijianhua  https://github.com/weijhfly/vue-tap
 */
 ;(function (factory) {
 	if (typeof define === 'function' && define.amd) {
@@ -59,7 +59,8 @@
 			el.exec = null;
 		}
    },
-   install:function(){
+   install:function(Vue){
 	   Vue.directive('tap', this.master);
-   }
+   },
+   version:'1.0.6'
 }))

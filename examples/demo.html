@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0" />
-	<title>vue plugin test</title>
+	<title>vue tap</title>
 	<style type="text/css">
 		strong{
 			font-size: 15px;
@@ -46,26 +46,6 @@
 		<button v-tap.stop="[test,'son']">stop propagation</button>
 	</div>
 </div>
-<script src="https://cdn.bootcss.com/vue/2.5.13/vue.js"></script>
-<script src="vue-tap.js"></script>
-<script>
-    new Vue({
-		el:'#app',
-		data:{
-			list:['a','b','c','e','f']
-		},
-		methods:{
-			tap:function(i,k){
-				console.log(i,k);
-			},
-			test:function(i){
-				console.log(i);
-			}
-		}
-	})
-	if(window.innerWidth < 768){
-		document.getElementsByTagName('body')[0].style.padding = 0;
-	}
-</script>
+<script src="../dist/build.js"></script>
 </body>
 </html>

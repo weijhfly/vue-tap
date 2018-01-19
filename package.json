@@ -1,0 +1,25 @@
+{
+  "name": "vue-js-tap",
+  "version": "1.0.6",
+  "description": "a tap plugin of vue",
+  "main": "vue-tap.js",
+  "bin": "src/vue-tap.js",
+  "scripts": {
+	"webpack": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue",
+    "vue-tap"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weijhfly/vue-tap"
+  },
+  "author": "wjh",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
+}
