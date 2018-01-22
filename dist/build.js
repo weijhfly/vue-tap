@@ -116,6 +116,9 @@ new Vue({
 			},
 			test:function(i){
 				console.log(i);
+			},
+			a:function(){
+				console.log('无法跳转');
 			}
 		}
 	})
@@ -11391,28 +11394,31 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
    master:{
 		bind: function (el, binding) {
 			var isTouch = "ontouchend" in document;
-			el.exec = function (e) {
+			el.exec = function () {
 				var data = binding.value;
+
+				if(!data && el.href && !binding.modifiers.prevent){return window.location = el.href;}
 				data[0].apply(this, data.slice(1));
 			};
 			if (isTouch) {
 				//touchstart
 				el.addEventListener('touchstart', function (e) {
 					binding.modifiers.stop && (e.stopPropagation());
+					binding.modifiers.prevent && (e.preventDefault());
 					var t = e.touches[0];
-					el.startX = t.clientX;
-					el.startY = t.clientY;
+					el.startX = t.pageX;
+					el.startY = t.pageY;
 					el.sTime = + new Date;
 				});
 				//touchend
 				el.addEventListener('touchend', function (e) {
 					binding.modifiers.stop && (e.stopPropagation());
+					binding.modifiers.prevent && (e.preventDefault());
 					var t = e.changedTouches[0];
-					el.endX = t.clientX;
-					el.endY = t.clientY;
+					el.endX = t.pageX;
+					el.endY = t.pageY;
 					if((+ new Date)-el.sTime<300){
 						if(Math.abs(el.endX-el.startX)+Math.abs(el.endY-el.startY)<20){
-							e.preventDefault();
 							el.exec();
 						}
 					}
@@ -11421,6 +11427,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 				//click
 				el.addEventListener('click', function (e) {
 				  binding.modifiers.stop && (e.stopPropagation());
+				  binding.modifiers.prevent && (e.preventDefault());
 				  el.exec();
 				});
 
@@ -11429,6 +11436,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		componentUpdated : function(el,binding) {
 			el.exec = function () {
 				var data = binding.value;
+				if(!data && el.href && !binding.modifiers.prevent){return window.location = el.href;}
 				data[0].apply(this, data.slice(1));
 			};
 		},
@@ -11439,7 +11447,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
    install:function(Vue){
 	   Vue.directive('tap', this.master);
    },
-   version:'1.0.8'
+   version:'1.0.9'
 }))
 
 

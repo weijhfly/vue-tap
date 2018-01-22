@@ -21,8 +21,15 @@ methods:{
 
 //阻止冒泡：
 v-tap.stop
+
+//阻止默认动作：
+v-tap.prevent
 ```
 ## Update
+### 2018.1.22(Update)
+
+> * 增加阻止默认动作v-tap.prevent
+> * 其他一些小调整
 ### 2018.1.18(publish)
 
 > * 发布至github及npm(vue-js-tap)

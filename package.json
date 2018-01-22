@@ -1,6 +1,6 @@
 {
   "name": "vue-js-tap",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "a tap plugin of vue",
   "main": "vue-tap.js",
   "bin": "vue-tap.js",
@@ -19,5 +19,7 @@
   "author": "wjh",
   "license": "MIT",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
 }

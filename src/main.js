@@ -13,6 +13,9 @@ new Vue({
 			},
 			test:function(i){
 				console.log(i);
+			},
+			a:function(){
+				console.log('无法跳转');
 			}
 		}
 	})
