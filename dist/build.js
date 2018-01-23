@@ -11412,8 +11412,8 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 				});
 				//touchend
 				el.addEventListener('touchend', function (e) {
+					e.preventDefault();
 					binding.modifiers.stop && (e.stopPropagation());
-					binding.modifiers.prevent && (e.preventDefault());
 					var t = e.changedTouches[0];
 					el.endX = t.pageX;
 					el.endY = t.pageY;

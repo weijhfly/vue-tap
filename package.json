@@ -1,6 +1,6 @@
 {
   "name": "vue-js-tap",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "a tap plugin of vue",
   "main": "vue-tap.js",
   "bin": "vue-tap.js",
