@@ -1,4 +1,4 @@
-# vue-tap [![npm](https://img.shields.io/npm/v/vue-js-tap.svg)](https://www.npmjs.com/package/vue-js-tap)
+# vue-tap [![npm](https://img.shields.io/npm/v/vue-js-tap.svg)](https://www.npmjs.com/package/vue-js-tap) [![npm](https://img.shields.io/npm/dm/vue-js-tap.svg)](https://www.npmjs.com/package/vue-js-tap)
 > a tap plugin of vue
 # Install
 ```js
