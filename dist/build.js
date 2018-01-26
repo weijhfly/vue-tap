@@ -10935,7 +10935,7 @@ return Vue$3;
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = Function.prototype.apply;
+/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
 
 // DOM APIs, for completeness
 
@@ -10986,9 +10986,17 @@ exports._unrefActive = exports.active = function(item) {
 
 // setimmediate attaches itself to the global object
 __webpack_require__(5);
-exports.setImmediate = setImmediate;
-exports.clearImmediate = clearImmediate;
+// On some exotic environments, it's not clear which object `setimmeidate` was
+// able to install onto.  Search each possibility in the same order as the
+// `setimmediate` library.
+exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
+                       (typeof global !== "undefined" && global.setImmediate) ||
+                       (this && this.setImmediate);
+exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
+                         (typeof global !== "undefined" && global.clearImmediate) ||
+                         (this && this.clearImmediate);
 
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 5 */
@@ -11378,7 +11386,7 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * vue-tap.js
+ * vue-tap.js v1.1.2
  * by weijianhua  https://github.com/weijhfly/vue-tap
 */
 ;(function (factory) {
@@ -11398,6 +11406,9 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 				var data = binding.value;
 
 				if(!data && el.href && !binding.modifiers.prevent){return window.location = el.href;}
+				if(el.tagName == 'INPUT' || el.tagName == 'TEXTAREA'){
+		          return el.focus();
+		        }
 				data[0].apply(this, data.slice(1));
 			};
 			if (isTouch) {
@@ -11446,8 +11457,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
    },
    install:function(Vue){
 	   Vue.directive('tap', this.master);
-   },
-   version:'1.0.9'
+   }
 }))
 
 

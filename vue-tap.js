@@ -1,5 +1,5 @@
 /*!
- * vue-tap.js
+ * vue-tap.js v1.1.2
  * by weijianhua  https://github.com/weijhfly/vue-tap
 */
 ;(function (factory) {
@@ -18,6 +18,9 @@
 				var data = binding.value;
 
 				if(!data && el.href && !binding.modifiers.prevent){return window.location = el.href;}
+				if(el.tagName == 'INPUT' || el.tagName == 'TEXTAREA'){
+		          return el.focus();
+		        }
 				data[0].apply(this, data.slice(1));
 			};
 			if (isTouch) {
@@ -66,6 +69,5 @@
    },
    install:function(Vue){
 	   Vue.directive('tap', this.master);
-   },
-   version:'1.1.1'
+   }
 }))
