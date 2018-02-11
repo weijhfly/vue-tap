@@ -29,7 +29,7 @@ v-tap.prevent
 ### 2018.1.22(Update)
 
 > * 增加阻止默认动作v-tap.prevent
-> * 其他一些小调整
+> * clientX/clientY换成pageX/pageY
 ### 2018.1.18(publish)
 
 > * 发布至github及npm(vue-js-tap)

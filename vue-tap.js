@@ -1,6 +1,7 @@
 /*!
- * vue-tap.js v1.1.2
- * by weijianhua  https://github.com/weijhfly/vue-tap
+ * vue-tap.js v1.1.3
+ *  By 雾空 https://github.com/weijhfly/vue-tap
+ * Time:2018/1/18
 */
 ;(function (factory) {
 	if (typeof define === 'function' && define.amd) {
