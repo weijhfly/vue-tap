@@ -1,6 +1,6 @@
 /*!
- * vue-tap.js v1.1.3
- *  By 雾空 https://github.com/weijhfly/vue-tap
+ * vue-tap.js v1.2.3
+ * By 雾空 https://github.com/weijhfly/vue-tap
  * Time:2018/1/18
 */
 ;(function (factory) {
@@ -15,35 +15,55 @@
    master:{
 		bind: function (el, binding) {
 			var isTouch = "ontouchend" in document;
-			el.exec = function () {
-				var data = binding.value;
+			
+			el.execFun = function (binding) {
+				return function(e){
+					var data = binding.value;
+					
+					if(!data){
+						if(el.href && !binding.modifiers.prevent){
+							return window.location = el.href;
+							
+						}else if(el.tagName == 'INPUT' || el.tagName == 'TEXTAREA'){
+							return el.focus();
+						}else{
+							return;
+						}
+					}
+					var	getEl = data.indexOf('$el'),
+						getEvent = data.indexOf('$event');
 
-				if(!data && el.href && !binding.modifiers.prevent){return window.location = el.href;}
-				if(el.tagName == 'INPUT' || el.tagName == 'TEXTAREA'){
-		          return el.focus();
-		        }
-				data[0].apply(this, data.slice(1));
+					getEl != -1 && (data[getEl] = el);
+					getEvent != -1 && (data[getEvent] = e);
+					
+					data[0].apply(this, data.slice(1));
+				}
 			};
+			el.exec = el.execFun(binding);
+			el.tapInfo = {};
+			
 			if (isTouch) {
 				//touchstart
 				el.addEventListener('touchstart', function (e) {
+					var t = e.touches[0];
+					
+					el.tapInfo.startX = t.pageX;
+					el.tapInfo.startY = t.pageY;
+					el.tapInfo.sTime = + new Date;
 					binding.modifiers.stop && (e.stopPropagation());
 					binding.modifiers.prevent && (e.preventDefault());
-					var t = e.touches[0];
-					el.startX = t.pageX;
-					el.startY = t.pageY;
-					el.sTime = + new Date;
 				});
 				//touchend
 				el.addEventListener('touchend', function (e) {
-					e.preventDefault();
-					binding.modifiers.stop && (e.stopPropagation());
 					var t = e.changedTouches[0];
-					el.endX = t.pageX;
-					el.endY = t.pageY;
-					if((+ new Date)-el.sTime<300){
-						if(Math.abs(el.endX-el.startX)+Math.abs(el.endY-el.startY)<20){
-							el.exec();
+					
+					el.tapInfo.endX = t.pageX;
+					el.tapInfo.endY = t.pageY;
+					if((+ new Date) - el.tapInfo.sTime<300){
+						if(Math.abs(el.tapInfo.endX - el.tapInfo.startX) + Math.abs(el.tapInfo.endY - el.tapInfo.startY)<20){
+							binding.modifiers.stop && (e.stopPropagation());
+							e.preventDefault();
+							el.exec(e);
 						}
 					}
 				});
@@ -52,20 +72,16 @@
 				el.addEventListener('click', function (e) {
 				  binding.modifiers.stop && (e.stopPropagation());
 				  binding.modifiers.prevent && (e.preventDefault());
-				  el.exec();
+				  el.exec(e);
 				});
 
 			}
 		},
 		componentUpdated : function(el,binding) {
-			el.exec = function () {
-				var data = binding.value;
-				if(!data && el.href && !binding.modifiers.prevent){return window.location = el.href;}
-				data[0].apply(this, data.slice(1));
-			};
+			el.exec = el.execFun(binding);
 		},
 		unbind: function (el) {
-			el.exec = null;
+			el.execFun = el.exec = el.tapInfo = null;
 		}
    },
    install:function(Vue){

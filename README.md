@@ -1,4 +1,4 @@
-# vue-tap [![npm](https://img.shields.io/npm/v/vue-js-tap.svg)](https://www.npmjs.com/package/vue-js-tap) [![npm](https://img.shields.io/npm/dm/vue-js-tap.svg)](https://www.npmjs.com/package/vue-js-tap)
+# vue-tap [![npm](https://img.shields.io/npm/v/vue-js-tap.svg)](https://www.npmjs.com/package/vue-js-tap)
 > a tap plugin of vue
 # Install
 ```js
@@ -24,14 +24,10 @@ v-tap.stop
 
 //阻止默认动作：
 v-tap.prevent
+
+//获取当前dom节点
+v-tap="[tap，'$el']"
+
+//获取当前事件
+v-tap="[tap，'$event']"
 ```
-## Update
-### 2018.1.22(Update)
-
-> * 增加阻止默认动作v-tap.prevent
-> * clientX/clientY换成pageX/pageY
-### 2018.1.18(publish)
-
-> * 发布至github及npm(vue-js-tap)
-> * 包含方法调用，阻止冒泡功能
-> * 只支持vue2.0+
