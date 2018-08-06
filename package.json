@@ -1,11 +1,9 @@
 {
   "name": "vue-js-tap",
-  "version": "1.2.3",
-  "description": "a tap plugin of vue",
+  "version": "1.2.4",
+  "description": "vue自定义指令v-tap，只支持vue2.0",
   "main": "vue-tap.js",
-  "bin": "vue-tap.js",
   "scripts": {
-    "webpack": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/weijhfly/vue-tap"
   },
-  "author": "wjh",
+  "author": "雾空",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {}
