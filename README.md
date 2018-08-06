@@ -8,16 +8,14 @@ Vue.use(vueTap);
 ```
 ### require.js
 ```js
-//注意，在requireJs中,vue-tap需要单独引入
-//<script src="vue-tap.js"></script>
-require(['vue'],function(Vue){
+require(['vue','vue-tap'],function(Vue,vueTap){
   vue.use(vueTap);
 })
 ```
 ### browser
 ```js
 //浏览器中直接引入
-//<script src="vue"></script>
+//<script src="vue.js"></script>
 //<script src="vue-tap.js"></script>
 ```
 ## 相关参数

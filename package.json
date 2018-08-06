@@ -1,6 +1,6 @@
 {
   "name": "vue-js-tap",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "vue自定义指令v-tap，只支持vue2.0",
   "main": "vue-tap.js",
   "scripts": {

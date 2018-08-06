@@ -1,17 +1,15 @@
 /*!
- * vue-tap.js v1.2.4
+ * vue-tap.js v1.2.5
  * By 雾空 https://github.com/weijhfly/vue-tap
  * Date:2018/1/18
 */
 ;(function (factory) {
-	if (typeof exports == "object") {
+	if (typeof define === 'function' && define.amd) {
+		define(function(){return factory;});
+	}else if (typeof exports == "object") {
 		module.exports = factory;
 	}else{
-		if(Vue){
-			Vue.use(factory)
-		}else{
-			window.vueTap = factory;
-		}
+		Vue.use(factory);
 	}
 }({
    master:{
